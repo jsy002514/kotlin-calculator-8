@@ -11,7 +11,8 @@ fun main() {
     val calculator = StringCalculator(
         NumberSummer(),
         NumberExtractor(),
-        NumberValidator()
+        NumberValidator(),
+        parser = NumberParser()
     )
     //계산기 객체로부터 결과를 전달받고 알맞은 출력문을 출력한다
     try{
