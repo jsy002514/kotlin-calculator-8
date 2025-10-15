@@ -4,7 +4,7 @@ import java.util.regex.Pattern
 
 class NumberExtractor {
     companion object{
-        private const val CUSTOM_DELIMETER_REGEX = "//(.*)\n(.*)"
+        private const val CUSTOM_DELIMETER_REGEX = "//(.*)\\\\n(.*)"
         private val pattern: Pattern = Pattern.compile(CUSTOM_DELIMETER_REGEX)
     }
     fun extract(text: String?) : List<String>{
