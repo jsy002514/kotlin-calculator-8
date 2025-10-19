@@ -1,15 +1,28 @@
+// calculator/NumberParser.kt
+
 package calculator
 
-class NumberParser() {
-    fun parse(strings: List<String>):List<Long>{
+import java.lang.NumberFormatException
+
+class NumberParser {
+    private val numberRegex = Regex("^[0-9]+$")
+
+    fun parse(strings: List<String>): List<Long> {
         return strings
             .filter { it.isNotEmpty() }
-            .map { str ->
-                try{
-                    str.toLong()
-                }catch (e: NumberFormatException){
-                    throw IllegalArgumentException("숫자 형식에 맞지 않거나 너무 큰 숫자입니다: $str")
-                }
-            }
+            .map { parseSingleString(it) }
+    }
+
+    private fun parseSingleString(str: String): Long {
+
+        if (!str.matches(numberRegex)) {
+            throw IllegalArgumentException("유효하지 않은 문자가 포함되어 있습니다: '$str'")
+        }
+
+        try {
+            return str.toLong()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("숫자가 너무 큽니다: $str")
+        }
     }
 }
