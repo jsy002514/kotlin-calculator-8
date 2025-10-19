@@ -21,7 +21,9 @@ class NumberExtractor {
             if(customdelimeter == "-"){
                 throw IllegalArgumentException ("음수는 허용되지 않습니다")
             }
-            delimeter.add(customdelimeter)
+            if(customdelimeter.isNotEmpty()) {
+                delimeter.add(customdelimeter)
+            }
             numberstring = matcher.group(2)
         }
 

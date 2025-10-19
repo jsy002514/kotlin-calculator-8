@@ -15,10 +15,6 @@ fun main() {
         parser = NumberParser()
     )
     //계산기 객체로부터 결과를 전달받고 알맞은 출력문을 출력한다
-    try{
-        val result = calculator.add(userinput)
-        println("결과 : $result")
-    }catch (e : IllegalArgumentException){
-        println("오류 : ${e.message}")
-    }
+    val result = calculator.add(userinput)
+    println("결과 : $result")
 }
