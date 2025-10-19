@@ -18,6 +18,9 @@ class NumberExtractor {
         val matcher = pattern.matcher(text)
         if(matcher.find()){
             val customdelimeter = matcher.group(1)
+            if(customdelimeter == "-"){
+                throw IllegalArgumentException ("음수는 허용되지 않습니다")
+            }
             delimeter.add(customdelimeter)
             numberstring = matcher.group(2)
         }
